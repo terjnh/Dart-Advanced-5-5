@@ -5,15 +5,15 @@ main(List<String> arguments) {
 
   var data = 'Hello World';
 
-  List<int> dataToSend = UTF8.encode(data);
+  List<int> dataToSend = utf8.encode(data);
   int port = 3000;
 
   //Server
-  RawDatagramSocket.bind(InternetAddress.LOOPBACK_IP_V4, port).then((RawDatagramSocket udpSocket){
+  RawDatagramSocket.bind(InternetAddress.loopbackIPv4, port).then((RawDatagramSocket udpSocket){
     udpSocket.listen((RawSocketEvent event) {
-      if(event == RawSocketEvent.READ) {
+      if(event == RawSocketEvent.read) {
         Datagram dg = udpSocket.receive();
-        print(UTF8.decode(dg.data));
+        print(utf8.decode(dg.data));
       }
     });
 
